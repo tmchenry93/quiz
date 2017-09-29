@@ -30,7 +30,7 @@ $(document).ready(function() {
 		for (var i=0; i< questions.length; i++){
 			var quest="";
 			questions[i].choices.forEach(function(answer, f){
-				quest += "<br><input type='radio' class='answer" + i + "' name='answer" + i + "' id='" + questions[i].choices[f] + "' value='" + questions[i].choices[f] + "'> " + questions[i].choices[f];
+				quest += "<br><input type='radio' class='answer'" + i + "name='answer" + i + "' id='" + questions[i].choices[f] + "' value='" + questions[i].choices[f] + "'> " + questions[i].choices[f];
 			});
 
 			var q = "<div class='laneNumber'>" + (i + 1) + "</div>" + questions[i].question + "<br>" 
@@ -64,12 +64,6 @@ $(document).ready(function() {
 		}
 	};
 
-	function emptyInputs(){
-		for (var i = 0; i < questions.length; i++) {
-			$(".answer" + i).val("");
-		}
-	};
-
 	// setting a function to the submit button on the DOM
 	$("#submission").click(function(){
 		$("#quizResults").show();
@@ -80,7 +74,7 @@ $(document).ready(function() {
 	});
 
 	// setting timer 
-	var number = 21;
+	var number = 11;
 	var interval;
 
 	function run(){
@@ -103,34 +97,23 @@ $(document).ready(function() {
 			}
 	};
 
+	// stopping the timer
 	function stop() {
       clearInterval(interval);
     };
 
-    // function clearInput() {
-    // 	// var ele = document.getElementsByClassName("answer" + i);
-   	// 		for (var i=0; i<questions[i].length; i++) {
-   	// 			var ele = document.getElementsByClassName("answer" + i);
-   	// 			// questions[i].choices.forEach(function(answer, f){
-   	// 				if (ele.checked == true) {
-   	// 					ele.checked = false;
-   	// 				}
-   	// 			// });
-   	// 		}
-    // };
-
+	// calling the run function to start when the page loads
 	run();
 
+	// this is the restart click function button 
 	$("#restart").click(function(){
 		$("#display").empty();
-		number = 21;
+		number = 11;
 		correct = 0;
 		incorrect = 0;
-		emptyInputs();
 		$("#questions").show();
 		$("#submission").show();
 		$("#quizResults").hide();
-		// clearInput();
 		run();
 	});
 
