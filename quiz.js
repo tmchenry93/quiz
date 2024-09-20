@@ -30,7 +30,7 @@ $(document).ready(function() {
 		for (var i=0; i< questions.length; i++){
 			var quest="";
 			questions[i].choices.forEach(function(answer, f){
-				quest += "<br><input type='radio' class='answer'" + i + "name='answer" + i + "' id='" + questions[i].choices[f] + "' value='" + questions[i].choices[f] + "'> " + questions[i].choices[f];
+				quest += "<br><input type='radio' class='answer" + i + "'" + " name='answer" + i + "' id='" + questions[i].choices[f] + "' value='" + questions[i].choices[f] + "'> " + questions[i].choices[f];
 			});
 
 			var q = "<div class='laneNumber'>" + (i + 1) + "</div>" + questions[i].question + "<br>" 
