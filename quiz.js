@@ -24,13 +24,14 @@ $(document).ready(function() {
 		choices: [ "bananas", "chocolate milk", "raw veggies" ]
 	};
 
-	// appending questions and answer choices onto the DOM
-	var questions = [ Q1, Q2, Q3, Q4 ];
+	function createQuestions(){
+		// appending questions and answer choices onto the DOM
+		var questions = [ Q1, Q2, Q3, Q4 ];
 
 		for (var i=0; i< questions.length; i++){
 			var quest="";
 			questions[i].choices.forEach(function(answer, f){
-				quest += "<br><input type='radio' class='answer" + i + "'" + " name='answer" + i + "' id='" + questions[i].choices[f] + "' value='" + questions[i].choices[f] + "'> " + questions[i].choices[f];
+				quest += "<br><input type='radio' class='answerOptions' name='answer" + i + "' id='" + questions[i].choices[f] + "' value='" + questions[i].choices[f] + "'> " + questions[i].choices[f];
 			});
 
 			var q = "<div class='laneNumber'>" + (i + 1) + "</div>" + questions[i].question + "<br>" 
@@ -38,40 +39,48 @@ $(document).ready(function() {
 
 			$("#questions").append(q);
 		};
+	}
 
 	// this function is ran once the quiz has been submitted
 	// this function calculates the number a person got correct, incorrect and did not answer
-	function score(){
-		var correct = 1;
-		var incorrect = 1;
+	function scoreQuiz(){
+		var correct = 0;
+		var incorrect = 0;
+		var blank = 0;
+		var unanswered = 0;
 
 		for (var i=0; i< questions.length; i++){
-			var naAnswers = document.getElementsByClassName("answer" + i);
 			questions[i].choices.forEach(function(answer, f){
-				// var naAnswers = document.getElementsByClassName("answer" + i);
 				var radio = document.getElementById(questions[i].choices[f]);
 				var choices = radio.value;
 
 				if (radio.checked && choices == questions[i].answer){
-					$("#correct").html(correct++);
+					correct++;
+				} else if (radio.checked && choices != questions[i].answer){
+					incorrect++;
+				} else {
+					blank++;
 				}
-
-				if (radio.checked && choices != questions[i].answer){
-					$("#incorrect").html(incorrect++);
-				}; 
-		
 			});
+
+			if (blank === 3){
+				unanswered++;
+			}
 		}
+
+		$("#correct").html(correct);
+		$("#incorrect").html(incorrect);
+		$("#unanswered").html(unanswered);
 	};
 
-	// setting a function to the submit button on the DOM
-	$("#submission").click(function(){
-		$("#quizResults").show();
-		$("#questions").hide();
-		$("#submission").hide();
-		stop();
-		score();
-	});
+	function removeInputSelection(){
+		var matches = document.querySelectorAll("input");
+		for (var i=0; i< matches.length; i++){
+			if (matches[i].type == "radio" && matches[i].checked){
+				matches[i].checked = false 
+			}
+		}
+	}
 
 	// setting timer 
 	var number = 11;
@@ -102,15 +111,36 @@ $(document).ready(function() {
       clearInterval(interval);
     };
 
-	// calling the run function to start when the page loads
-	run();
+	// start, submission and restart buttons for the runner's quiz
+	
+	$("#start").click(function(){
+		createQuestions();
+		number = 11;
+		correct = 0;
+		incorrect = 0;
+		unanswered = 0;
+		$("#questions").show();
+		$("#submission").show();
+		run();
+	});
+
+	// setting a function to the submit button on the DOM
+	$("#submission").click(function(){
+		$("#quizResults").show();
+		$("#questions").hide();
+		$("#submission").hide();
+		stop();
+		scoreQuiz();
+	});
 
 	// this is the restart click function button 
 	$("#restart").click(function(){
 		$("#display").empty();
+		removeInputSelection()
 		number = 11;
 		correct = 0;
 		incorrect = 0;
+		unanswered = 0;
 		$("#questions").show();
 		$("#submission").show();
 		$("#quizResults").hide();
