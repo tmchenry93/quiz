@@ -46,10 +46,11 @@ $(document).ready(function() {
 	function scoreQuiz(){
 		var correct = 0;
 		var incorrect = 0;
-		var blank = 0;
 		var unanswered = 0;
 
 		for (var i=0; i< questions.length; i++){
+			var blank = 0;
+
 			questions[i].choices.forEach(function(answer, f){
 				var radio = document.getElementById(questions[i].choices[f]);
 				var choices = radio.value;
@@ -58,16 +59,18 @@ $(document).ready(function() {
 					correct++;
 				} else if (radio.checked && choices != questions[i].answer){
 					incorrect++;
-				} else {
+				} 
+				
+				if (!radio.checked) {
 					blank++;
+					
+					if (blank === 3){
+						unanswered++;
+					}
 				}
 			});
 		}
 
-		if (blank === 3){
-			unanswered++;
-		}
-		
 		$("#correct").html(correct);
 		$("#incorrect").html(incorrect);
 		$("#unanswered").html(unanswered);
@@ -120,8 +123,10 @@ $(document).ready(function() {
 		incorrect = 0;
 		unanswered = 0;
 		$("#display").show();
+		$("#results").show();
 		$("#questions").show();
 		$("#submission").show();
+		$("#TagLineButton").hide();
 		run();
 	});
 
@@ -138,7 +143,8 @@ $(document).ready(function() {
 	// this is the restart click function button 
 	$("#restart").click(function(){
 		$("#display").empty();
-		removeInputSelection()
+		$("#results").show();
+		removeInputSelection();
 		number = 11;
 		correct = 0;
 		incorrect = 0;

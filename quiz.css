@@ -66,8 +66,11 @@ hr {
 body {
 	font-family: 'Raleway', sans-serif;
 	background-image: url("trackTurf.jpg");
-	opacity: 0.5;
+	background-image:
 	background-color: #af2f21;
+	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
 }
 
 button {
@@ -112,6 +115,10 @@ a:hover {
 	color: #000;
 }
 
+#unanswered {
+	color: #000;
+}
+
 #na {
 	color: #000;
 }
@@ -127,5 +134,9 @@ body {
 #quizResults {
 	font-size: 20px;
 	color: #4d79bb;
+}
+
+#results {
+	display: none;
 }
 
