@@ -24,10 +24,10 @@ $(document).ready(function() {
 		choices: [ "bananas", "chocolate milk", "raw veggies" ]
 	};
 
+	var questions = [ Q1, Q2, Q3, Q4 ];
+
 	function createQuestions(){
 		// appending questions and answer choices onto the DOM
-		var questions = [ Q1, Q2, Q3, Q4 ];
-
 		for (var i=0; i< questions.length; i++){
 			var quest="";
 			questions[i].choices.forEach(function(answer, f){
@@ -62,12 +62,12 @@ $(document).ready(function() {
 					blank++;
 				}
 			});
-
-			if (blank === 3){
-				unanswered++;
-			}
 		}
 
+		if (blank === 3){
+			unanswered++;
+		}
+		
 		$("#correct").html(correct);
 		$("#incorrect").html(incorrect);
 		$("#unanswered").html(unanswered);
@@ -102,7 +102,7 @@ $(document).ready(function() {
 				$("#quizResults").show();
 				$("#questions").hide();
 				$("#submission").hide();
-				score();
+				scoreQuiz();
 			}
 	};
 
@@ -119,6 +119,7 @@ $(document).ready(function() {
 		correct = 0;
 		incorrect = 0;
 		unanswered = 0;
+		$("#display").show();
 		$("#questions").show();
 		$("#submission").show();
 		run();
@@ -129,6 +130,7 @@ $(document).ready(function() {
 		$("#quizResults").show();
 		$("#questions").hide();
 		$("#submission").hide();
+		$("#display").hide();
 		stop();
 		scoreQuiz();
 	});
@@ -141,6 +143,7 @@ $(document).ready(function() {
 		correct = 0;
 		incorrect = 0;
 		unanswered = 0;
+		$("#display").show();
 		$("#questions").show();
 		$("#submission").show();
 		$("#quizResults").hide();
