@@ -126,7 +126,7 @@ $(document).ready(function() {
 		$("#results").show();
 		$("#questions").show();
 		$("#submission").show();
-		$("#TagLineButton").hide();
+		$("#start").hide();
 		run();
 	});
 
