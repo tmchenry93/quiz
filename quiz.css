@@ -8,8 +8,10 @@
 }
 
 #start {
-	height: 15%;
-	width: 20%;
+	width: 100px;
+	height:30px;
+	font-weight: bold;
+	border-radius: 5px;
 	color: #af2f21;
 }
 
@@ -19,7 +21,6 @@
 }
 
 #quizResults {
-	/*border: 5px dotted #369;*/
 	background-color:  #8b9392;
 	border-radius: 2%;
 	margin-top: 2%;
@@ -65,12 +66,7 @@ hr {
 
 body {
 	font-family: 'Raleway', sans-serif;
-	background-image: url("trackTurf.jpg");
-	background-image:
 	background-color: #af2f21;
-	background-position: center;
-  	background-repeat: no-repeat;
-  	background-size: cover;
 }
 
 button {
