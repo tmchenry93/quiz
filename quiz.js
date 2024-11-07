@@ -41,6 +41,12 @@ $(document).ready(function() {
 		};
 	}
 
+	function questionTransitionalDropdown(){
+		document.getElementById(questions).style.opacity = 1;
+		document.getElementById(questions).style.position = initial;
+
+	}
+
 	// this function is ran once the quiz has been submitted
 	// this function calculates the number a person got correct, incorrect and did not answer
 	function scoreQuiz(){
@@ -95,9 +101,9 @@ $(document).ready(function() {
 
 	function decrement(){
 		number--;
-		$("#display").html("<h1 id='time'><center> 00 : " + number + "</center></h1>");
+		$("#display").html("<h1 id='time'> 00 : " + number + "</h1>");
 			if (number < 10){
-				$("#display").html("<h1 id='time'><center> 00 : 0" + number + "</center></h1>");
+				$("#display").html("<h1 id='time'> 00 : 0" + number + "</h1>");
 			}
 			
 			if (number === 0){
@@ -125,6 +131,7 @@ $(document).ready(function() {
 		$("#display").show();
 		$("#results").show();
 		$("#questions").show();
+		questionTransitionalDropdown();
 		$("#submission").show();
 		$("#start").hide();
 		run();
@@ -151,6 +158,7 @@ $(document).ready(function() {
 		unanswered = 0;
 		$("#display").show();
 		$("#questions").show();
+		questionTransitionalDropdown();
 		$("#submission").show();
 		$("#quizResults").hide();
 		run();

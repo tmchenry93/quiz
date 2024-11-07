@@ -8,16 +8,17 @@
 }
 
 #start {
-	width: 100px;
-	height:30px;
+	width: 12.5%;
+	height: 6%;
 	font-weight: bold;
 	border-radius: 5px;
 	color: #af2f21;
 }
 
 .title {
-	margin-top: 1.25%;
-	margin-bottom: 1.25%;
+	margin-top: 35%;
+	margin-bottom: 35%;
+	text-align: center;
 }
 
 #quizResults {
@@ -94,6 +95,7 @@ a:hover {
 	color: #4d79bb;
 	border-radius: 5px;
 	display: none;
+	text-align: center;
 }
 
 #timer {
@@ -102,6 +104,7 @@ a:hover {
 	position: relative;
 	z-index: 2;
 	top: 100px;
+	text-align: center;
 }
 
 #correct {
@@ -139,5 +142,9 @@ body {
 
 #questions {
 	display: none;
+	text-align: center;
+	opacity: 0;
+	transition: visibility 0s, opacity 0.5s linear;
+	position: absolute;
 }
 
