@@ -127,6 +127,7 @@ $(document).ready(function() {
 		correct = 0;
 		incorrect = 0;
 		unanswered = 0;
+		$("#titlePageDisplay").hide();
 		$("#questionsDisplay").show();
 		$("#results").show();
 		run();
@@ -145,7 +146,6 @@ $(document).ready(function() {
 		$("#quizResultsDisplay").hide();
 		$("#display").empty();
 		removeInputSelection();
-		$("#results").show();
 		number = 11;
 		correct = 0;
 		incorrect = 0;
