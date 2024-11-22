@@ -15,42 +15,56 @@
 </head>
 <body>
 
-	<div class="row title">
+	<div id="titlePageDisplay" class="row">
+
   		<div class="col-xs-2 col-sm-2 col-md-3"></div>
 
-  		<div class="col-xs-8 col-sm-8 col-md-6 title">
-  				<h1>
-  					Runner's Quiz
-  				</h1>
+  		<div id="title" class="col-xs-8 col-sm-8 col-md-6">
+  			<h1>
+  				Runner's Quiz
+  			</h1>
 
-				<br >
+			<br >
 
-				<h3>
-					On Your March, Get Set, 
-				</h3>
+			<h3>
+				On Your March, Get Set, 
+			</h3>
 
-				<br>
+			<br >
 
-				<a href="#TagLineButton">	
-					<input type="button" value="GO" id="start">
-				</a>
+			<a href="#TagLineButton">	
+				<button type="button" value="GO" id="start"></button>
+			</a>
   		</div>
+
   	</div>
 
-	<div class="row">
+	<div id="questionsDisplay" class="row">
+
+		<div class="col-md-12">
+			<a name="results">	
+				<div id="display">
+					<div id="timer"></div> 
+				</div>
+			</a>
+
+			<br >
+
+			<div id="questions"></div>
+
+			<br >
+			
+			<a href="#results">	
+				<button type="button" value="SUBMIT" id="submission"></button>
+			</a>
+		</div>
+
+	</div>
+
+	<div id="quizResultsDisplay" class="row">
 
 		<div class="col-xs-2 col-sm-2 col-md-2"></div>
 		<div class="col-xs-8 col-sm-8 col-md-8 results">
-
-			<a name="results">	
-
-				<div id="display">
-
-					<div id="timer"></div> 
-
-				</div>
-
-			</a>
 			
 			<div id="quizResults">
 
@@ -64,7 +78,7 @@
 
 				<br>
 
-				<button id="restart">RESTART</button>
+				<button type="button" value="RESTART" id="restart"></button>
 
 			</div>
 
@@ -72,28 +86,6 @@
 		<div class="col-xs-2 col-sm-2 col-md-2"></div>
 
 	</div>
-	
-	<div class="row">
-
-  		<div id="questions" class="col-md-12"></div>
-
-  	</div>
-
-	<div class="row">
-
-  		<div class="col-md-5"></div>
-  		<div class="col-md-2">
-
-			<a href="#results">	
-
-				<input type="button" value="SUBMIT" id="submission">
-
-			</a>
-
-		</div>
-  		<div class="col-md-5"></div>
-
-  	</div>
 
 </body>
 </html>

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	// setting questions' answers and choices
+	// creating "questions" object for the quiz
 	var Q1 = {
 		question: "How many miles are in a 10k?",
 		answer: 6.2,
@@ -24,6 +24,7 @@ $(document).ready(function() {
 		choices: [ "bananas", "chocolate milk", "raw veggies" ]
 	};
 
+	// combining "questions" objects for the question array for the quiz
 	var questions = [ Q1, Q2, Q3, Q4 ];
 
 	function createQuestions(){
@@ -41,11 +42,10 @@ $(document).ready(function() {
 		};
 	}
 
-	function questionTransitionalDropdown(){
-		document.getElementById(questions).style.opacity = 1;
-		document.getElementById(questions).style.position = initial;
-
-	}
+	//function questionTransitionalDropdown(){
+		//document.getElementById("questions").style.opacity = 1;
+		//document.getElementById("questions").style.position = initial;
+	//}
 
 	// this function is ran once the quiz has been submitted
 	// this function calculates the number a person got correct, incorrect and did not answer
@@ -108,9 +108,8 @@ $(document).ready(function() {
 			
 			if (number === 0){
 				stop();
-				$("#quizResults").show();
-				$("#questions").hide();
-				$("#submission").hide();
+				$("#quizResultsDisplay").show();
+				$("#questionsDisplay").hide();
 				scoreQuiz();
 			}
 	};
@@ -128,39 +127,30 @@ $(document).ready(function() {
 		correct = 0;
 		incorrect = 0;
 		unanswered = 0;
-		$("#display").show();
+		$("#questionsDisplay").show();
 		$("#results").show();
-		$("#questions").show();
-		questionTransitionalDropdown();
-		$("#submission").show();
-		$("#start").hide();
 		run();
 	});
 
 	// setting a function to the submit button on the DOM
 	$("#submission").click(function(){
-		$("#quizResults").show();
-		$("#questions").hide();
-		$("#submission").hide();
-		$("#display").hide();
+		$("#questionsDisplay").hide();
+		$("#quizResultsDisplay").show();
 		stop();
 		scoreQuiz();
 	});
 
 	// this is the restart click function button 
 	$("#restart").click(function(){
+		$("#quizResultsDisplay").hide();
 		$("#display").empty();
-		$("#results").show();
 		removeInputSelection();
+		$("#results").show();
 		number = 11;
 		correct = 0;
 		incorrect = 0;
 		unanswered = 0;
-		$("#display").show();
-		$("#questions").show();
-		questionTransitionalDropdown();
-		$("#submission").show();
-		$("#quizResults").hide();
+		$("#questionsDisplay").show();
 		run();
 	});
 

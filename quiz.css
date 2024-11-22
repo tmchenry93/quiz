@@ -1,7 +1,14 @@
+#questionsDisplay{
+	display: none;
+}
+
+#quizResultsDisplay{
+	display:none;
+}
+
 #display {
 	background-color: #000;
 	height: 150px;
-	display: none;
 	border: 5px solid #8b9392;
 	color: #658;
 	z-index: 1;
@@ -15,9 +22,9 @@
 	color: #af2f21;
 }
 
-.title {
-	margin-top: 35%;
-	margin-bottom: 35%;
+#title {
+	margin: auto;
+	width: 100%;
 	text-align: center;
 }
 
@@ -141,10 +148,6 @@ body {
 }
 
 #questions {
-	display: none;
 	text-align: center;
-	opacity: 0;
-	transition: visibility 0s, opacity 0.5s linear;
-	position: absolute;
+	margin: auto;
 }
-
